@@ -33,7 +33,7 @@ export const State=()=>{
         <h1 className="text-3xl">{count}</h1>
         <h1 className="text-3xl">{count}</h1>
         <h1 className="text-3xl">{count}</h1>
-          <button className=" border-4 border-blue-400 bg-[rgba(0,0,0,0.4)] text-white text-lg" onClick={increase}>
+          <button className=" h-10 border-4 border-blue-400 bg-[rgba(0,0,0,0.4)] text-white text-lg" onClick={increase}>
             Click me baby to increase
           </button>
           <button className=" border-4 border-blue-400 bg-red-500 text-white text-lg" onClick={decrease}>
