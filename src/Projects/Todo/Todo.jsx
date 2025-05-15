@@ -1,65 +1,74 @@
 import { useState } from "react";
-import { FaCheck} from "react-icons/fa";
-import { MdDeleteOutline } from "react-icons/md";
+import { Todoform } from "./Todoform";
+import { Todolist } from "./Todolist";
+import { DataCom } from "./DataCom";
 import "./Todo.css";
 
 export const Todo=()=>{
-    const [inputvalue, setInputvalue]=useState("");
     const [task, setTask]=useState([]);
-    const handleInputChange=(value)=>{
-                setInputvalue(value);
+
+    const handleFormSubmit=(inputvalue)=>{   
+       const {id, content, checked}=inputvalue;
+        if(!content) return;
+      if(task.find((curElem)=>curElem.content===content)) return;
+        
+        //previous data lai access garna milxa
+        setTask((prev)=>[...prev,{id, content, checked}]);
+         
+        
+    }
+    //date in javascript and setinterval ley chai after 1 milliseconds function lai call garney kam garxa.
+    //for deleting the todo-list
+    const handleDelete=(e)=>{
+       console.log(e);
+       console.log(task);
+       const updatedValue=task.filter((curElem)=> curElem.content!=e.content);
+       setTask(updatedValue);
+            
+    }
+    const handleCheck=(value)=>{
+          const updatedvalue=task.map((curElem)=>{
+            if(curElem.content===value){
+                return {...curElem,checked:!curElem.checked}
+            }else{
+                return curElem;
+            }
+          });
+          setTask(updatedvalue);
+        
+
+    }
+    const deleteAll=()=>{
+       
+       setTask([]);
     }
 
-    const handleFormSubmit=(event)=>{   
-        event.preventDefault();
-        if(!inputvalue) return;
-        if(task.includes(inputvalue)){
-            setInputvalue("");
-            return;
-        } 
-        //previous data lai access garna milxa
-        setTask((prev)=>[...prev,inputvalue]);
-    }
     return(
         <section>
             <header>
-               <h1>Todo List</h1>
+               <h1 className="text-black-500 text-center mt-10 text-2xl font-bold">Todo List</h1>
+                 <DataCom/>
             </header>
-            <section className="form">
-              <form onSubmit={handleFormSubmit}>
-                <div>
-                    <input type="text"
-                     className="todo-input" 
-                     autoComplete="off"
-                    value={inputvalue}
-                    onChange={(event)=>handleInputChange(event.target.value)} />
-                </div>
-                <div>
-                    <button type="submit" className="todo-btn">Click me</button>
-                </div>
-              </form>
-            </section>
+           <Todoform   onAdd={handleFormSubmit}  />
             <section className="myUnOrdList ml-30" >
         
             <ul>
                 {
-                    task.map((curElem,index)=>{
-                           return(
-                              <li key ={index} className="todo-item ">
-                            <span>name:{curElem}  </span>
-                            <button className="check-btn">
-                                <FaCheck/>
-                            </button>
-                            <button className="delete-btn">
-                                <MdDeleteOutline  />
-                            </button>
-                        </li>
-                         
-                           );
+                    task.map((curElem)=>{
+                       return   <Todolist key={curElem.id}  
+                       curElem={curElem}
+                       checked={curElem.checked}
+                        handleDelete={handleDelete} 
+                        handleCheck={handleCheck} />     
                     })
                 }
             </ul>
+            
             </section>
+            <section>
+                 <button className=" ml-155  clear-btn" onClick={deleteAll} >Clear All</button>
+            </section>
+           
         </section>
 );
 }

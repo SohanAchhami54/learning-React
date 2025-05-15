@@ -14,7 +14,7 @@ import {Toggleswitch} from "./Projects/Toggleswitch";
     
     return(
       <div>
-      <h1 className="text-5xl text-center mt-20 text-green-500">my name is sohan achhami</h1>
+      {/* <h1 className="text-5xl text-center mt-20 text-green-500">my name is sohan achhami</h1> */}
         <Todo/>
 
       {/* <LiftingUpState/> */}
