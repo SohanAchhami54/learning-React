@@ -46,6 +46,7 @@ export const NewRegistration=()=>{
     }
     return(
         <>
+       
         <p className="grid grid-cols-2 font-bold text-2xl">
             hello my name is :{user.firstName} {user.lastName}
             <span>
@@ -54,9 +55,10 @@ export const NewRegistration=()=>{
             <span>
                 my phone number is:{user.number}
             </span>
+             <h1>hello there</h1>
         </p>
        <form onSubmit={passtheData} >
-        <div className=" grid">
+        <div className=" grid ">
             <h1>SignUp form</h1>
             <p>please fill this form to create the new account</p>
             <label htmlFor="firstName">
