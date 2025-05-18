@@ -15,24 +15,29 @@ import { UseState } from "./Projects/hooks/useState";
 import { Registration } from "./Projects/hooks/Registration";
 import { NewRegistration } from "./Projects/hooks/NewRegistration";
 import {Login} from "./Projects/hooks/login"
+ //import { Useeffect } from "./Projects/Hooks2/Useeffect";
 // import { IoIosSwitch } from "react-icons/io";
+import {Cleanup} from "./Projects/hookss/Cleanup"
+import { Howtonotfetchapi } from "./Projects/hookss/Howtonotfetchapi";
   export const App=()=>{
     
     return(
-      <>
+      <div >
       {/* <h1 className="text-5xl text-center mt-20 text-green-500">my name is sohan achhami</h1> */}
         {/* <Todo/> */}
         {/* <UseState /> */}
         {/* <Registration/> */}
-        <NewRegistration/>
+        {/* <NewRegistration/> */}
         {/* <Login/> */}
-
+        {/* <Useeffect/> */}
+          <Howtonotfetchapi/>
+         {/* <Cleanup/> */}
       {/* <LiftingUpState/> */}
       {/* <MasterUseState/> */}
 
       {/* <State/> */}
 
-      </>
+      </div>
       // <section className="container">
       // <h1 className="card-heading">List of the movies</h1>
       // <Netflix/>

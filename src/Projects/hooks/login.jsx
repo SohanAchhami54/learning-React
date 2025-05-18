@@ -1,25 +1,27 @@
 import { useState } from "react"
 export const Login=()=>{
+const [username,setUsername]=useState("");
+const [password,setPassword]=useState("");
+const [email,setEmail]=useState("");
+    // const handleForm=(e)=>{
+    //     const{name,value}= e.target;
 
-    const [user, setUser]=useState({
-       
-    });
-    const handleForm=(e)=>{
-        const{name,value}= e.target;
+    //      setUser((prev)=>({...prev,[name]:value}));
+    // }
 
-         setUser((prev)=>({...prev,[name]:value}));
-    }
-
-    const handleSubmit=()=>{
+    const handleSubmit=(e)=>{
              e.preventDefault();
-             const userData={...user};
-             console.log(userData);
-             setUser({
-            username:"",
-            email:"",
-            password:"",
-             });
-    }
+            const formData={
+                username,
+                password,
+                email,
+            };
+            console.log(formData);
+            setPassword("");
+            setEmail("");
+            setUsername("");
+        };
+
     return(
         <>
         
@@ -34,30 +36,30 @@ export const Login=()=>{
                 name="username"
                  placeholder="enter your name"
                 
-                 value={user.username}
-                 onChange={handleForm}  />
+                 value={username}
+                 onChange={(e)=>setUsername(e.target.value)}  />
 
                  <label htmlFor="email">email</label>
                 <input type="email" 
                 name="email"
                 placeholder="enter your email"
-                 value={user.email}
-                 onChange={handleForm} 
+                 value={email}
+                 onChange={(e)=>setEmail(e.target.value)} 
                   />
 
                 <label htmlFor="password">Password</label>
                 <input type="password" 
                 name="password"
                 placeholder="enter your password"   
-                 value={user.password}
-                 onChange={handleForm} 
+                 value={password}
+                 onChange={(e)=>setPassword(e.target.value)} 
                   />
 
-                <button type="submit" className="w-2 border rounded-xl mt-2">  CLick me</button>
+                <button type="submit" className="w-2 border rounded-xl mt-2">Login </button>
                 </div>
                </form>
         
          
         </>
-    )
+    );
 }
